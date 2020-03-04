@@ -1,5 +1,3 @@
-const React = require( "./Text" );
+import Text from "./Text.jsx";
 
-module.exports = {
-    React,
-};
+export { Text };

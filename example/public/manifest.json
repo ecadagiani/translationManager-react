@@ -1,0 +1,8 @@
+{
+  "short_name": "translation-manager-react",
+  "name": "translation-manager-react",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

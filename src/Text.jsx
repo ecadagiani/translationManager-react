@@ -1,8 +1,8 @@
-const React                  = require( "react" );
-const PropTypes              = require( "prop-types" );
-const ReactHtmlParser        = require( "react-html-parser" );
-const { TranslationManager } = require( "translation-manager" );
-const { isComponent }        = require( "@ecadagiani/reacttools" );
+import React                  from "react";
+import PropTypes              from "prop-types";
+import ReactHtmlParser        from "react-html-parser";
+import { TranslationManager } from "translation-manager";
+import { isComponent }        from "@ecadagiani/reacttools";
 
 
 const Text = ({
@@ -47,4 +47,4 @@ Text.propTypes = {
     react:         PropTypes.bool,
 };
 
-module.exports = Text;
+export default Text;

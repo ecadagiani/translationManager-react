@@ -1,34 +1,79 @@
 {
-  "name": "translation-manager-react",
-  "version": "1.0.2",
-  "description": "An React wrapper of translationManager",
-  "main": "./src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ecadagiani/translationManager-react.git"
-  },
-  "author": "Eden Cadagiani <e.cadagiani@gmail.com>",
-  "engines": {
-    "node": ">=8.3.0"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ecadagiani/translationManager-react/issues"
-  },
-  "homepage": "https://github.com/ecadagiani/translationManager-react#readme",
-  "dependencies": {
-    "@ecadagiani/reacttools": "^1.0.3",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.0",
-    "react-html-parser": "^2.0.2",
-    "translation-manager": "^2.0.4"
-  },
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.18.3",
-    "eslint-plugin-react-hooks": "^2.5.0"
-  }
+    "name": "translation-manager-react",
+    "version": "1.0.3",
+    "description": "An React wrapper of translationManager",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ecadagiani/translationManager-react.git"
+    },
+    "author": "Eden Cadagiani <e.cadagiani@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ecadagiani/translationManager-react/issues"
+    },
+    "homepage": "https://github.com/ecadagiani/translationManager-react#readme",
+    "keywords": [
+        "translation",
+        "manager",
+        "management",
+        "translations",
+        "i18n",
+        "json",
+        "simple",
+        "language",
+        "lang",
+        "locale",
+        "mulitlangual",
+        "internationalization",
+        "react",
+        "react-component"
+    ],
+    "main": "dist/index.js",
+    "module": "dist/index.es.js",
+    "jsnext:main": "dist/index.es.js",
+    "engines": {
+        "node": ">=8",
+        "npm": ">=5"
+    },
+    "scripts": {
+        "build": "rollup -c",
+        "start": "rollup -c -w",
+        "prepare": "npm run build"
+    },
+    "dependencies": {
+        "@ecadagiani/reacttools": "^1.0.8",
+        "react-html-parser": "^2.0.2",
+        "translation-manager": "^2.0.6"
+    },
+    "peerDependencies": {
+        "prop-types": "^15.7.2",
+        "react": "^16.13.0",
+        "react-dom": "^16.13.0"
+    },
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-plugin-external-helpers": "^6.22.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "cross-env": "^5.1.4",
+        "eslint": "^6.8.0",
+        "eslint-plugin-react": "^7.18.3",
+        "eslint-plugin-react-hooks": "^2.5.0",
+        "eslint-plugin-import": "^2.13.0",
+        "react": "^16.13.0",
+        "react-dom": "^16.13.0",
+        "react-scripts": "^3.4.0",
+        "rollup": "^1.32.0",
+        "rollup-plugin-babel": "^3.0.7",
+        "@rollup/plugin-commonjs": "^11.0.2",
+        "@rollup/plugin-node-resolve": "^7.1.1",
+        "rollup-plugin-peer-deps-external": "^2.2.0",
+        "rollup-plugin-postcss": "^2.1.1",
+        "@rollup/plugin-url": "^4.0.2",
+        "@rollup/plugin-json": "^4.0.2"
+    },
+    "files": [
+        "dist"
+    ]
 }
