@@ -1,0 +1,105 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "globals": {
+        "withLog": "readonly",
+        "log": "readonly"
+    },
+    "plugins": [
+        "react",
+        "react-hooks"
+    ],
+    "rules": {
+        "no-new-func": "off",
+        "indent": [
+            "warn",
+            4
+        ],
+        "quotes": [
+            "warn",
+            "double"
+        ],
+        "semi": [
+            "warn",
+            "always"
+        ],
+        "no-multi-spaces": [
+            "warn",
+            {
+                "exceptions": {
+                    "ImportDeclaration": true,
+                    "VariableDeclarator": true,
+                    "Property": true
+                }
+            }
+        ],
+        "no-console": "warn",
+        "prefer-template": "warn",
+        "no-cond-assign": "off",
+        "spaced-comment": [
+            "warn",
+            "always"
+        ],
+        "space-before-blocks": "warn",
+        "space-infix-ops": "warn",
+        "space-before-function-paren": "warn",
+        "space-in-parens": [
+            "warn",
+            "always",
+            {
+                "exceptions": [
+                    "{}",
+                    "[]",
+                    "()",
+                    "empty"
+                ]
+            }
+        ],
+        "brace-style": [
+            "warn",
+            "1tbs",
+            {
+                "allowSingleLine": true
+            }
+        ],
+        "no-unused-vars": [
+            "warn",
+            {
+                "args": "none",
+                "ignoreRestSiblings": true
+            }
+        ],
+        "react/jsx-uses-vars": "error",
+        "react/jsx-uses-react": "error",
+        "react/display-name": "off",
+        "react-hooks/rules-of-hooks": "error",
+        // Checks rules of Hooks
+        "react-hooks/exhaustive-deps": "warn",
+        // Checks effect dependencies
+        "no-irregular-whitespace": [
+            "error",
+            {
+                "skipStrings": true,
+                "skipRegExps": true,
+                "skipTemplates": true
+            }
+        ],
+        "keyword-spacing": [
+            "error",
+            {
+                "before": true,
+                "after": true
+            }
+        ]
+    }
+}
