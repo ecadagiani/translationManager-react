@@ -1,6 +1,6 @@
 {
     "name": "translation-manager-react",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "description": "An React wrapper of translationManager",
     "repository": {
         "type": "git",
@@ -41,14 +41,14 @@
         "prepare": "npm run build"
     },
     "dependencies": {
-        "@ecadagiani/reacttools": "^1.0.8",
-        "react-html-parser": "^2.0.2",
-        "translation-manager": "^2.0.6"
+        "@ecadagiani/reacttools": "^1.0.9",
+        "html-react-parser": "^0.10.1"
     },
     "peerDependencies": {
         "prop-types": "^15.7.2",
         "react": "^16.13.0",
-        "react-dom": "^16.13.0"
+        "react-dom": "^16.13.0",
+        "translation-manager": "^2.1.0"
     },
     "devDependencies": {
         "babel-core": "^6.26.3",
@@ -61,9 +61,6 @@
         "eslint-plugin-react": "^7.18.3",
         "eslint-plugin-react-hooks": "^2.5.0",
         "eslint-plugin-import": "^2.13.0",
-        "react": "^16.13.0",
-        "react-dom": "^16.13.0",
-        "react-scripts": "^3.4.0",
         "rollup": "^1.32.0",
         "rollup-plugin-babel": "^3.0.7",
         "@rollup/plugin-commonjs": "^11.0.2",

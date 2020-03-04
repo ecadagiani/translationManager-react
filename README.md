@@ -1,11 +1,12 @@
 # translationManager-react
 An React wrapper of [translationManager](https://github.com/ecadagiani/translationManager)
 
+[demo](https://codesandbox.io/s/demotranslationmanagerreact-yro9g)
 
 ## Setup:
 0. `npm i translation-manager && npm i translation-manager-react`
 
-1. Create a folder `/translations` in your project (or copy [translationsExample](./translationsExample) from this repo)
+1. Create a folder `/translations` in your project (or copy [translationsExample](./example/src/translations) from this repo)
 
 2. Under this `/translations` folder create this tree:
     - `/translations`
@@ -79,10 +80,130 @@ files are the compilation of the previous files.
     }
     ```
 
+## Notes
+### TranslationManager.getText
+`TranslationManager.getText` does not actually return a string,
+it returns an instance of the TranslationText class. TranslationText is an extends of String.
+But you can use it like a string, all the methods of the string class are available,
+you can Jsonify, concat, split, trim...
+
+However:
+- `typeof` return "object"
+- if you print it, in the console, it display all the object
+- to avoid memory link, if you no longer need a text, think to do `monTexte.destroy()`
+
+### insertValues
+You can insert values in your text, translationManager use [lodash template](https://lodash.com/docs/4.17.15#template).
+In your text in json file, add `${<keyName>}`.
+When you make `getText`, specify insertValue option, example:
+```json
+{
+    "AN_ERROR_OCCURRED": {
+        "value": "an error occurred: ${errorMessage}"
+    }
+}
+```
+
+```javascript
+const err = new Error("foobar");
+TranslationManager.getText(textCode.AN_ERROR_OCCURRED, {insertValues: {errorMessage: err.message}});
+```
+
+### html
+You can use html tag in your text. If you use Text component, and set the props `html` to true.
+An parser will convert your string in react node.
+
+### render
+To change languages dynamically, the components that own the text must be re-render,
+for this, you can simply subscribe your component to `TranslatioNmanager.onLanguageUpdate()`.
+But you can, more simply, use the Text component, or the hooks of this API.
 
 
 ## API
-### Text
+### [component] Text
+###### props:
+```javascript
+Text.propTypes = {
+    className:     PropTypes.string,
+    textCode:      PropTypes.string, // the wanted textCode, you can find them by import the builded file: "textCodes.json"
+    language:      PropTypes.string, // to force the language
+    insertValues:  PropTypes.object, // an object to insert values in your text
+    option:        PropTypes.oneOf( ["capitalize","capitalizeWord","capitalizeSentence","uppercase","lowercase"]), // to transform your text
+    special:       PropTypes.string, // if you want a special translation example: "plural", "interogation", ...
+    ExtraContent:  PropTypes.oneOfType([PropTypes.function, PropTypes.element, PropTypes.string, PropTypes.number]), // a component which will be rendered after the text
+    plural:        PropTypes.bool, // to override the props special and set this to "plural"
+    interrogation: PropTypes.bool, // to override the props special and set this to "interrogation"
+    html:         PropTypes.bool, // if the text must be parsed
+};
+```
+###### example:
+```javascript
+import React from "react";
+import { Text } from "translation-manager-react";
+import textCodes from "./translations/textCodes";
+
+const DynamicNiceText = () => {
+    return (
+        <div>
+            <Text textCode={textCodes.CATEGORY}/>
+        </div>
+    );
+};
+```
+###### Notes
+The Text Component wrap your text in a span, and add an `data-textcode` to this element.
+To simplify your debugging, and when you add a new language
+
+
+### [hooks] useTranslationManager
+An hooks for use TranslationManager. This hooks subscribe your component to the language update event.
+###### example:
+```javascript
+import React from "react";
+import { useTranslationManager } from "translation-manager-react";
+import textCodes from "./translations/textCodes";
+
+const WithHooksTranslationManager = () => {
+    const TranslationManager = useTranslationManager();
+    return (
+        <div>
+            {TranslationManager.getText( textCodes.CATEGORY )}
+        </div>
+    );
+};
+```
+
+
+### [hooks] useTextCode
+This hook allows you to recover the text directly. It is the lightest solution,
+and avoid too many re-render when the language change.
+###### params:
+- textCode: [String] the wanted textCode
+- options: [Object]
+    - options.special: ["value"] {string} the special value from the textCode to use
+    - options.option: {string} an constant string (TranslationManager.textOptions=[capitalize,capitalizeWord,capitalizeSentence,uppercase,lowercase])
+    - options.language: [appLanguage] {string} to force language
+    - options.insertValues: {Object} an object of insert value {key: value}, in the translation text, you have to add ${<key>}
+- forceString: [bool] (default true) if you want an TranslationText or an string,
+keep true if you want't a light solution
+###### example:
+```javascript
+import React from "react";
+import { useTextCode } from "translation-manager-react";
+import textCodes from "./translations/textCodes";
+
+const WithHooksTextCode = () => {
+    const textCode = textCodes.CATEGORY;
+    const options = {special: "plural"};
+    const forceString = true;
+    const text = useTextCode( textCode, options, forceString );
+    return (
+        <div>
+            {text}
+        </div>
+    );
+};
+```
 
 
 
