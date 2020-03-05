@@ -136,6 +136,10 @@ Text.propTypes = {
     html:         PropTypes.bool, // if the text must be parsed
 };
 ```
+###### properties:
+```javascript
+   Text.options = ["capitalize","capitalizeWord","capitalizeSentence","uppercase","lowercase"]
+```
 ###### example:
 ```javascript
 import React from "react";
