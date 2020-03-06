@@ -11,7 +11,7 @@ export function useTranslationManager () {
     return TranslationManager;
 }
 
-export function useTextCode ( textCode, options, forceString = true ) {
+export function useTextCode ( textCode, options, useDynamicText = false ) {
     const [appLanguage, setAppLanguage] = useState( TranslationManager.getAppLanguage());
 
     useEffect(() => {
@@ -19,7 +19,7 @@ export function useTextCode ( textCode, options, forceString = true ) {
     }, []);
 
     return useMemo(() => {
-        return TranslationManager.getText( textCode, options, forceString );
+        return TranslationManager.getText( textCode, options, useDynamicText );
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [textCode, options, forceString, appLanguage]);
+    }, [textCode, options, useDynamicText, appLanguage]);
 }
