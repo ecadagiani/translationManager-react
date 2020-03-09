@@ -1,6 +1,6 @@
 {
     "name": "translation-manager-react",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "An React wrapper of translationManager",
     "repository": {
         "type": "git",

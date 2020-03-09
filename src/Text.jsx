@@ -43,7 +43,7 @@ Text.propTypes = {
     insertValues:  PropTypes.object,
     option:        PropTypes.oneOf( Object.values( TranslationManager.textOptions )),
     special:       PropTypes.string,
-    ExtraContent:  PropTypes.oneOfType([PropTypes.function, PropTypes.element, PropTypes.string, PropTypes.number]),
+    ExtraContent:  PropTypes.oneOfType([PropTypes.func, PropTypes.element, PropTypes.string, PropTypes.number]),
     plural:        PropTypes.bool,
     interrogation: PropTypes.bool,
     html:         PropTypes.bool,
