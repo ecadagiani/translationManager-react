@@ -18,10 +18,21 @@ const Text = ({
     insertValues = null,
     html = false,
     ExtraContent = null,
+    capitalize = false,
+    capitalizeWord = false,
+    capitalizeSentence = false,
+    uppercase = false,
+    lowercase = false,
 }) => {
     let special = _special;
     special = plural ? "plural" : special;
     special = interrogation ? "interrogation" : special;
+
+    if ( capitalize ) option = TranslationManager.option.capitalize;
+    if ( capitalizeWord ) option = TranslationManager.option.capitalizeWord;
+    if ( capitalizeSentence ) option = TranslationManager.option.capitalizeSentence;
+    if ( uppercase ) option = TranslationManager.option.uppercase;
+    if ( lowercase ) option = TranslationManager.option.lowercase;
 
     let text = useTextCode( textCode, { special, language, option, insertValues });
     if ( html ) text = parse( text );
@@ -37,16 +48,21 @@ const Text = ({
 Text.options = TranslationManager.textOptions;
 
 Text.propTypes = {
-    className:     PropTypes.string,
-    textCode:      PropTypes.string,
-    language:      PropTypes.string,
-    insertValues:  PropTypes.object,
-    option:        PropTypes.oneOf( Object.values( TranslationManager.textOptions )),
-    special:       PropTypes.string,
-    ExtraContent:  PropTypes.oneOfType([PropTypes.func, PropTypes.element, PropTypes.string, PropTypes.number]),
-    plural:        PropTypes.bool,
-    interrogation: PropTypes.bool,
-    html:         PropTypes.bool,
+    className:          PropTypes.string,
+    textCode:           PropTypes.string,
+    language:           PropTypes.string,
+    insertValues:       PropTypes.object,
+    option:             PropTypes.oneOf( Object.values( TranslationManager.textOptions )),
+    special:            PropTypes.string,
+    ExtraContent:       PropTypes.oneOfType([PropTypes.func, PropTypes.element, PropTypes.string, PropTypes.number]),
+    plural:             PropTypes.bool,
+    interrogation:      PropTypes.bool,
+    html:               PropTypes.bool,
+    capitalize:         PropTypes.bool,
+    capitalizeWord:     PropTypes.bool,
+    capitalizeSentence: PropTypes.bool,
+    uppercase:          PropTypes.bool,
+    lowercase:          PropTypes.bool,
 };
 
 export default Text;

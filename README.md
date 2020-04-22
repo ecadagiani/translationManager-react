@@ -134,6 +134,12 @@ Text.propTypes = {
     plural:        PropTypes.bool, // to override the props special and set this to "plural"
     interrogation: PropTypes.bool, // to override the props special and set this to "interrogation"
     html:         PropTypes.bool, // if the text must be parsed
+
+    capitalize:         PropTypes.bool, // quick props to override props option
+    capitalizeWord:     PropTypes.bool, // quick props to override props option
+    capitalizeSentence: PropTypes.bool, // quick props to override props option
+    uppercase:          PropTypes.bool, // quick props to override props option
+    lowercase:          PropTypes.bool, // quick props to override props option
 };
 ```
 ###### properties:
@@ -221,7 +227,7 @@ $ build-translations <path_to_your_translations_folder>
 ### clean-translations
 To clean your translations files (rearrange textCodes, sort them alphabetically and can transform their case)
 ```bash
-$ build-translations <path_to_your_translations_folder> <base_folder_name> <organizeOtherLanguageLikeBase> <minimizeValueCase>
+$ clean-translations <path_to_your_translations_folder> <base_folder_name> <organizeOtherLanguageLikeBase> <minimizeValueCase>
 ```
 - path_to_your_translations_folder: path to the translation folder
 - base_folder_name: the name of the language folder on which all cleaning will be based.
@@ -230,7 +236,7 @@ textCodes of other languages will be stored in the same way as the selected lang
 - minimizeValueCase: if you want to transform all value in lowerCase
 ```bash
 example:
-$ build-translations ./translations english true true
+$ clean-translations ./translations english true true
 ```
 
 ### watch-translations
