@@ -28,13 +28,14 @@ const Text = ({
     special = plural ? "plural" : special;
     special = interrogation ? "interrogation" : special;
 
-    if ( capitalize ) option = TranslationManager.option.capitalize;
-    if ( capitalizeWord ) option = TranslationManager.option.capitalizeWord;
-    if ( capitalizeSentence ) option = TranslationManager.option.capitalizeSentence;
-    if ( uppercase ) option = TranslationManager.option.uppercase;
-    if ( lowercase ) option = TranslationManager.option.lowercase;
+    let _option = option;
+    if ( capitalize ) _option = TranslationManager.textOptions.capitalize;
+    if ( capitalizeWord ) _option = TranslationManager.textOptions.capitalizeWord;
+    if ( capitalizeSentence ) _option = TranslationManager.textOptions.capitalizeSentence;
+    if ( uppercase ) _option = TranslationManager.textOptions.uppercase;
+    if ( lowercase ) _option = TranslationManager.textOptions.lowercase;
 
-    let text = useTextCode( textCode, { special, language, option, insertValues });
+    let text = useTextCode( textCode, { special, language, option: _option, insertValues });
     if ( html ) text = parse( text );
 
     return (

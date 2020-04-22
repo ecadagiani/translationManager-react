@@ -8,7 +8,7 @@ import textCodes                                    from "./translations/textCod
 const WithText = () => {
     return (
         <div>
-            withText: <b><Text textCode={textCodes.CATEGORY} option={Text.options.lowercase}/></b>
+            withText: <b><Text textCode={textCodes.CATEGORY} uppercase/></b>
         </div>
     );
 };
